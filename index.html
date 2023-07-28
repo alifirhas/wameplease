@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>wa.me please</title>
+
+		<!-- Script -->
+		<script src="./index.js"></script>
+	</head>
+	<body>
+		<!-- Form input -->
+		<div>
+			<label for="telepon">Whatsapp Number</label>
+			<input
+				type="text"
+				oninput="numberOnly(this.id);"
+				maxlength="13"
+				id="no_telephone"
+				name="no_telephone"
+			/>
+			<button onclick="generateLink()">Generate Link</button>
+		</div>
+
+		<!-- Link result -->
+		<a target="_blank" href="" id="link_result"></a>
+	</body>
+
+	<script>
+		function numberOnly(id) {
+			var element = document.getElementById(id);
+			element.value = element.value.replace(/[^0-9]/gi, "");
+		}
+
+		function generateLink() {
+			var linkElement = document.getElementById("link_result");
+			var telephone = document.getElementById("no_telephone").value;
+
+			var link = "http://wa.me/" + String(telephone);
+			linkElement.href = link;
+			linkElement.textContent = link;
+
+			console.log(link);
+		}
+	</script>
+</html>
