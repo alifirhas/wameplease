@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="forest">
+<html lang="en" data-theme="emerald">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,44 +12,49 @@
 		<script src="./index.js"></script>
 
 		<!-- Theme changer -->
-		<script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script> -->
+
+		<!-- Iconify -->
+		<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 	</head>
 	<body>
 		<div
 			class="container mx-auto p-0 md:p-4 flex flex-col justify-center items-center h-screen"
 		>
-			<!-- Form -->
-			<div>
-				<!-- Input Number -->
-				<div class="form-control w-full max-w-xs mb-4">
-					<label class="label">
-						<label for="telepon"><span>Whatsapp Number</span></label>
-					</label>
-					<div class="join">
-						<button class="btn btn-neutral btn-lg join-item">+62</button>
+			<div class="w-full max-w-xs mb-4">
+				<h2 class="mb-4 font-bold">Enter Whatsapp number</h2>
+				<!-- Form -->
+				<form action="" onsubmit="event.preventDefault(); generateLink();">
+					<!-- Input Number -->
+					<div class="form-control w-full max-w-xs mb-4">
 						<input
 							type="text"
-							placeholder="89774241741"
+							placeholder="6289774241741"
 							class="input input-bordered input-lg w-full max-w-xs join-item"
 							oninput="numberOnly(this.id);"
 							maxlength="12"
-							id="no_telephone"
-							name="no_telephone"
+							id="whatsapp_number"
+							name="whatsapp_number"
 						/>
 					</div>
-				</div>
 
-				<!-- Generate link button -->
-				<button class="btn btn-primary w-full" onclick="generateLink()">
-					Generate Link
-				</button>
+					<!-- Generate link button -->
+					<button class="btn btn-primary w-full" onclick="generateLink()">
+						<span class="iconify w-5 h-5" data-icon="fa-brands:whatsapp"></span>
+						Generate Link
+					</button>
+				</form>
 			</div>
 
 			<!-- Link result -->
-			<div class="mt-4 w-full max-w-xs">
+			<div class="w-full max-w-xs">
 				<a target="_blank" href="" class="hidden" id="linkResult">
-					<button class="btn btn-active btn-accent w-full" id="linkButton">
-						Chat
+					<button class="btn btn-secondary w-full">
+						<span id="linkText">Chat</span>
+						<span
+							class="iconify w-5 h-5 ml-2"
+							data-icon="heroicons-outline:external-link"
+						></span>
 					</button>
 				</a>
 			</div>
@@ -63,15 +68,15 @@
 		}
 
 		function generateLink() {
-			var linkElement = document.getElementById("linkResult");
-			var buttonLinkElement = document.getElementById("linkButton");
-			var telephone = document.getElementById("no_telephone").value;
+			var linkResult = document.getElementById("linkResult");
+			var linkText = document.getElementById("linkText");
+			var telephone = document.getElementById("whatsapp_number").value;
 
-			var link = "http://wa.me/62" + String(telephone);
+			var link = "http://wa.me/" + String(telephone);
 
-			buttonLinkElement.textContent = "Chat with +62" + telephone;
-			linkElement.href = link;
-			linkElement.classList.remove("hidden");
+			linkText.textContent = "Chat with " + telephone;
+			linkResult.href = link;
+			linkResult.classList.remove("hidden");
 
 			console.log(link);
 		}
