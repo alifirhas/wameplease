@@ -38,7 +38,7 @@
 						<!-- Input Number -->
 						<input
 							type="text"
-							placeholder="6289774241741"
+							placeholder="whatsapp number..."
 							class="input input-bordered input-lg w-full max-w-xs"
 							oninput="numberOnly(this.id);"
 							maxlength="20"
@@ -69,13 +69,34 @@
 			</div>
 		</div>
 
-		<!-- Setting modal -->
-		<button
-			class="btn btn-neutral fixed bottom-[20px] right-[20px] z-10"
-			onclick="setting_modal.showModal()"
+		<!-- bottom modal button and credit link -->
+		<div
+			class="fixed bottom-0 pb-5 px-5 z-10 w-full flex justify-between items-end"
 		>
-			<span class="iconify w-5 h-5" data-icon="fa6-solid:gear"></span>
-		</button>
+			<!-- Author credit link -->
+			<div class="flex flex-col gap-0 md:flex-row md:gap-2">
+				<a
+					href="https://alifirhas.github.io/"
+					class="italic underline"
+					target="_blank"
+					>@alifirhas</a
+				>
+				<span class="hidden md:block"> / </span>
+				<a
+					href="https://github.com/alifirhas/wameplease"
+					target="_blank"
+					class="italic underline"
+					>wameplease</a
+				>
+			</div>
+
+			<!-- Setting modal button -->
+			<button class="btn btn-neutral" onclick="setting_modal.showModal()">
+				<span class="iconify w-5 h-5" data-icon="fa6-solid:gear"></span>
+			</button>
+		</div>
+
+		<!-- Setting modal dialog -->
 		<dialog id="setting_modal" class="modal modal-bottom sm:modal-middle z-20">
 			<form method="dialog" class="modal-box overflow-visible">
 				<h3 class="font-bold text-lg mb-4">Settings</h3>
